@@ -4,7 +4,7 @@ const BASE_PATH = __DIR__ .  DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR;
 
 require_once "../services/functions.php";
 
-use services\database\Database;
+use services\database\MySqlDB;
 use services\routing\Router;
 
 // Enable class autoloading
@@ -18,7 +18,7 @@ $config = require_once basePath("config.php");
 // Load the app routes
 require_once basePath("routes.php");
 
-$db = new Database($config);
+$db = new MySqlDB($config);
 
 // Routing
 $router = new Router();
