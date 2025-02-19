@@ -31,8 +31,8 @@ class Route{
         return $this->actions;
     }
 
-    public function getAction($method): array | callable{
-        return $this->actions[$method];
+    public function getAction($method): array | callable | null{
+        return $this->actions[$method] ?? null;
     }
 
     public function addAction($action): array{
@@ -41,23 +41,9 @@ class Route{
     }
 
     // Execute one of the routes actions
-    public function execute($method){
-        $callback = $this->getAction($method);
-        if (! $callback){
-            // Route doesn't support the given method
-            // TODO: Solve if Route should be handling controller execution or the router is responsible of that
-            var_dump("ROUTE DOESN'T SUPPORT THE GIVEN METHOD");
-            die();
-        }
-        // If not true, callback given as Closure or function
-        if (is_array($callback)){
-            // Callback given as [Classname, method] structure
-            $instance = newInstance($callback[0]);
-            $callback[0] = $instance;
-        }
-        call_user_func($callback);
+    public function getCallback($method){
+        return $this->getAction($method);
     }
-
 }
 
 

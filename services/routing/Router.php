@@ -5,7 +5,9 @@ namespace services\routing;
 class Router{
     protected static $routes = [];
 
+    // HTTP codes constants
     const NOT_FOUND = 404;
+    const NOT_SUPPORTED = 405;
 
      // Creates a GET Route
      public function get($uri, $callback): Route{
@@ -30,12 +32,12 @@ class Router{
         $route = new Route($uri, ["DELETE" => $callback]);
         return $this->addRoute($route);
     }
+    
     /**
      * Return a route given a uri
      * @var uri: URI of the route
      * @return Route | null
      */
-    
     private function addRoute($route): Route{
         $existingRoute = $this->getRoute($route->getUri());
         if ($existingRoute){
@@ -56,13 +58,36 @@ class Router{
         }
         return null;
     }
+
     // Execute a route's action
     public  function route($uri, $method, $errorCallback){
         $route = $this->getRoute($uri);
         if ($route){
-            $route->execute($method);
+            $routeCallback = $route->getCallback($method);
+            if (! $routeCallback){
+                // Route doesn't support the given method
+                $errorCallback(Router::NOT_SUPPORTED);
+                die();
+            }
+            if (is_array($routeCallback)){
+                /**
+                 * Callback given as [Classname, method] structure. Need to parse
+                 * it to be able to execute it
+                */
+                $routeCallback = $this->parseArrayCallback($routeCallback);
+            }
+            // Execute the callback
+            call_user_func($routeCallback);
         }else{
+            // Route doesn't exist
             $errorCallback(Router::NOT_FOUND);
         }
+    }
+
+    private function parseArrayCallback($callback): array{
+        // Parse a callback given as [className, methodName] so it can be executed
+        $instance = newInstance($callback[0]);
+        $callback[0] = $instance;
+        return $callback;
     }
 }
