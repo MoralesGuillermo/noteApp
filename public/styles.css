@@ -40,6 +40,15 @@ h1, h2, h3, h4{
 
 .flex{
     display: flex;
+    gap: 1.5em;
+}
+
+.flex-wrap{
+    flex-wrap: wrap;
+}
+
+.flex-vertical{
+    flex-direction: column;
 }
 
 .justify-around{
@@ -48,6 +57,10 @@ h1, h2, h3, h4{
 
 .justify-between{
     justify-content: space-between;
+}
+
+.justify-center{
+    justify-content: center;
 }
 
 .align-center{
@@ -126,6 +139,10 @@ ul.no-style{
     color: var(--bg-dark)
 }
 
+.text-big{
+    font-size: 36px;
+}
+
 .header{
     box-shadow: 0 0px 4px gray;
     background-color: white;
@@ -139,3 +156,25 @@ ul.no-style{
 .valign-center{
     vertical-align: center;
 }
+
+.card{
+    width: 250px;
+    height: 350px;
+    border-radius: 10px;
+    outline: solid #ffffff;
+}
+
+.card:hover{
+    cursor: pointer;
+}
+
+.card:active{
+    filter: brightness(1.15);
+}
+
+.noselect{
+    -ms-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
