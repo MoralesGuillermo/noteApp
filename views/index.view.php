@@ -9,7 +9,7 @@
     <main>
         <div class="p1 my-2">
             <!--A call to action button. To show your notes -->
-            <a class="py-2 px-2 my-1" href="">Check my notes</a>
+            <a class="py-2 px-2 my-1" href="/notes">Check my notes</a>
         </div>
     </main>
 </body>

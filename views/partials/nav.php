@@ -5,9 +5,9 @@
     </div>
     <div>
         <ul class="no-style">
-            <li class="inline"><a class="text-primary" href="">Home</a></li>
-            <li class="inline"><a class="text-primary" href="">Notes</a></li>
-            <li class="inline"><a class="text-primary" href="">About us</a></li>
+            <li class="inline"><a class="text-primary" href="/">Home</a></li>
+            <li class="inline"><a class="text-primary" href="/notes">Notes</a></li>
+            <li class="inline"><a class="text-primary" href="/about">About us</a></li>
         </ul>
     </div>
     <div class="px-1">
