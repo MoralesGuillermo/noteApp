@@ -5,6 +5,8 @@ namespace controllers;
 class AboutController{
 
     public function get(){
-        return view("about.view.php");
+        $header = "About us";
+        $params = compact("header");
+        return view("about.view.php", $params);
     }
 }
