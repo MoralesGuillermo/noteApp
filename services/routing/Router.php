@@ -5,6 +5,8 @@ namespace services\routing;
 class Router{
     protected static $routes = [];
 
+    const NOT_FOUND = 404;
+
      // Creates a GET Route
      public function get($uri, $callback): Route{
         $route = new Route($uri, ["GET" => $callback]);
@@ -55,12 +57,12 @@ class Router{
         return null;
     }
     // Execute a route's action
-    public  function route($uri, $method){
+    public  function route($uri, $method, $errorCallback){
         $route = $this->getRoute($uri);
         if ($route){
             $route->execute($method);
         }else{
-            // 404 Page not found
+            $errorCallback(Router::NOT_FOUND);
         }
     }
 }

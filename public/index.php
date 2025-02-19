@@ -13,16 +13,19 @@ spl_autoload_register(function ($class){
     require_once basePath("{$class}.php");
 });
 
+// App's configuration
 $config = require_once basePath("config.php");
 
 // Load the app routes
 require_once basePath("routes.php");
 
+// Initialize Database
 $db = new MySqlDB($config);
 
 // Routing
+// Passes functions.php's $abort anonymous function
 $router = new Router();
-$router->route($_SERVER["REQUEST_URI"], $_SERVER["REQUEST_METHOD"]);
+$router->route($_SERVER["REQUEST_URI"], $_SERVER["REQUEST_METHOD"], $abort);
 
  
 

@@ -13,5 +13,12 @@ function view($view, $params=[]){
 
 function newInstance($classname){
     return new $classname();
-
 }
+
+/** Shows an abort view given a HTTP code.
+* The view must be created by the user
+*/
+$abort = function($code){
+    http_response_code($code);
+    view("{$code}.view.php");
+};
