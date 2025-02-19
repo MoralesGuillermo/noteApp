@@ -1,6 +1,6 @@
 <nav class="flex justify-between align-center bg-dark text-primary py-1">
     <div class="px-1 flex align-center">
-        <img src="images/noteApp_logo.png" alt="Logo" height="48" width="48" class="float-left">
+        <img src="/images/noteApp_logo.png" alt="Logo" height="48" width="48" class="float-left">
         <span class="mx-1 logo-text">Smart Pen</span>
     </div>
     <div>
