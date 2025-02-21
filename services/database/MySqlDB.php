@@ -17,15 +17,15 @@ class MySqlDB{
 
     private function initConnection($config): mysqli{
         $dbHost = $config["DB_HOST"];
-        $dbPort = $config["DB_PORT"];
         $dbUser = $config["DB_USER"];
         $dbPassword = $config["DB_PASSWORD"];
         $dbName = $config["DB_NAME"];
+        $dbPort = $config["DB_PORT"];
         return new mysqli($dbHost, $dbUser, $dbPassword, $dbName, $dbPort);
     }
 
-    public function query($statement): array | null{
+    public function query($query, $params=[]): array | false{
         // Execute a SQL query
-        return null;
+        return $this->connection->execute_query($query, $params)->fetch_all(MYSQLI_ASSOC);
     }
 }

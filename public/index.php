@@ -20,7 +20,7 @@ $config = require_once basePath("config.php");
 require_once basePath("routes.php");
 
 // Initialize Database
-$db = new MySqlDB($config);
+$database = new MySqlDB($config);
 
 // Routing
 // Passes functions.php's $abort anonymous function
